@@ -15,7 +15,7 @@ const Home = () => {
 
 
         {data.map((item) => (
-          <PizzaCard key={item.id} item={item} />
+          <PizzaCard key={item.id} pizza={item} />
         ))}
       </Stack>
         </Container>

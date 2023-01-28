@@ -9,6 +9,7 @@ function App() {
 
 
   return (
+
     <div className="App">
       <Navbar />
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/pizza/:id" element={<Pizza />} />
       </Routes>
     </div>
+
   )
 }
 
