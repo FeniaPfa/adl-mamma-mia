@@ -1,4 +1,4 @@
-import { Container } from '@mui/material'
+import { Container, Stack, Typography } from '@mui/material'
 import React from 'react'
 import PizzaDetail from '../components/PizzaDetail'
 import { useGlobalContext } from '../context/GlobalContext'
@@ -6,8 +6,12 @@ import { useGlobalContext } from '../context/GlobalContext'
 const Cart = () => {
   const {pizzas} = useGlobalContext()
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="md" sx={{margin:"2rem auto"}}>
+      <Typography variant='h4'>Detalles del pedido:</Typography>
+      <Stack gap="2rem">
+
       {pizzas.map((item) => <PizzaDetail pizza={item} />)}
+      </Stack>
     </Container>
   )
 }

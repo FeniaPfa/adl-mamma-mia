@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Badge,
   Container,
   Link,
   Stack,
@@ -45,7 +46,8 @@ const Navbar = () => {
           </Stack>
           <Stack
             direction="row"
-            sx={{ gap: "2rem", "> a": { color: "#fff" } }}
+            gap="1.2rem"
+            sx={{"> a": { color: "#fff" } }}
           >
             <Link
               style={activeLink}
@@ -60,9 +62,12 @@ const Navbar = () => {
               component={NavLink}
               sx={{display: "flex"}}
             >
+              <Badge badgeContent={totalPizzaCount} color="warning">
               <ShoppingCartIcon />
-              <Typography variant="body1">{total} - {totalPizzaCount}</Typography>
+
+              </Badge>
             </Link>
+              <Typography variant="body1">{total}</Typography>
 
           </Stack>
         </Toolbar>
