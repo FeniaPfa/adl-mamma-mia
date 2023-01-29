@@ -12,7 +12,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 const Navbar = () => {
 
-  const {total, pizzaCount} = useGlobalContext()
+  const {total, totalPizzaCount} = useGlobalContext()
 
 
   const activeStyle = {
@@ -61,7 +61,7 @@ const Navbar = () => {
               sx={{display: "flex"}}
             >
               <ShoppingCartIcon />
-              <Typography variant="body1">{total} - {pizzaCount}</Typography>
+              <Typography variant="body1">{total} - {totalPizzaCount}</Typography>
             </Link>
 
           </Stack>

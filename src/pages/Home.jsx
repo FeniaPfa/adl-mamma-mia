@@ -1,10 +1,11 @@
 import { Container,  Stack } from '@mui/material';
 import Header from '../components/Header';
-import { useFetch } from '../hooks/useFetch';
 import PizzaCard from '../components/PizzaCard';
+import { useGlobalContext } from '../context/GlobalContext';
 
 const Home = () => {
-  const { data } = useFetch('pizzas.json');
+  const {pizzas, pizzasState} = useGlobalContext();
+  // console.log(pizzasState);
   return (
     <>
       <Header />
@@ -14,7 +15,7 @@ const Home = () => {
 
 
 
-        {data.map((item) => (
+        {pizzas.map((item) => (
           <PizzaCard key={item.id} pizza={item} />
         ))}
       </Stack>
