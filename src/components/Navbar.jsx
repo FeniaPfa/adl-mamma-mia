@@ -67,7 +67,7 @@ const Navbar = () => {
 
               </Badge>
             </Link>
-              <Typography variant="body1">{total}</Typography>
+              <Typography variant="body1">$ {total}</Typography>
 
           </Stack>
         </Toolbar>

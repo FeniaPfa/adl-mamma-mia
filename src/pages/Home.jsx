@@ -1,27 +1,31 @@
-import { Container,  Stack } from '@mui/material';
-import Header from '../components/Header';
-import PizzaCard from '../components/PizzaCard';
-import { useGlobalContext } from '../context/GlobalContext';
+import { Container, Stack } from "@mui/material";
+import Header from "../components/Header";
+import PizzaCard from "../components/PizzaCard";
+import { useGlobalContext } from "../context/GlobalContext";
 
 const Home = () => {
-  const {pizzas, pizzasState} = useGlobalContext();
-  // console.log(pizzasState);
-  return (
-    <>
-      <Header />
-      <Container maxWidth="xl">
+    const { pizzas } = useGlobalContext();
 
-      <Stack direction="row" gap="2rem" flexWrap="wrap" justifyContent="center">
-
-
-
-        {pizzas.map((item) => (
-          <PizzaCard key={item.id} pizza={item} />
-        ))}
-      </Stack>
-        </Container>
-    </>
-  );
+    return (
+        <>
+            <Header />
+            <Container maxWidth="xl">
+                <Stack
+                    direction="row"
+                    gap="2rem"
+                    flexWrap="wrap"
+                    justifyContent="center"
+                >
+                    {pizzas.map((item) => (
+                        <PizzaCard
+                            key={item.id}
+                            pizza={item}
+                        />
+                    ))}
+                </Stack>
+            </Container>
+        </>
+    );
 };
 
 export default Home;
