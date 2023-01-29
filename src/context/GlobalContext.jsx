@@ -22,11 +22,11 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const substractPizza = (pizza) => {
-    if(total === 0) return
-    setTotal(total - pizza.price);
-    setTotalPizzaCount(totalPizzaCount - 1);
     const pizzaIndex = currentPizzas.findIndex((item) => item.id === pizza.id);
     let newPizzas = [...currentPizzas];
+    if(total === 0 || currentPizzas[pizzaIndex].quantity === 0) return
+    setTotal(total - pizza.price);
+    setTotalPizzaCount(totalPizzaCount - 1);
     newPizzas[pizzaIndex] = {
       id: currentPizzas[pizzaIndex].id,
       quantity: currentPizzas[pizzaIndex].quantity - 1,
