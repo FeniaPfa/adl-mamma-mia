@@ -9,7 +9,10 @@ const Home = () => {
     return (
         <>
             <Header />
-            <Container maxWidth="xl" sx={{margin: "2rem auto"}}>
+            <Container
+                maxWidth="xl"
+                sx={{ margin: "2rem auto" }}
+            >
                 <Stack
                     direction="row"
                     gap="2rem"

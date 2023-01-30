@@ -12,7 +12,6 @@ import {
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
-import { useFetch } from "../hooks/useFetch";
 
 const PizzaCard = ({ pizza }) => {
     const { addPizza, formatNumber } = useGlobalContext();
@@ -45,7 +44,12 @@ const PizzaCard = ({ pizza }) => {
                     <Typography variant="h6">Ingredientes:</Typography>
                     <List>
                         {pizza.ingredients.map((item) => (
-                            <ListItem key={item} sx={{paddingBlock:".2rem"}}>🍕 {item}</ListItem>
+                            <ListItem
+                                key={item}
+                                sx={{ paddingBlock: ".2rem" }}
+                            >
+                                🍕 {item}
+                            </ListItem>
                         ))}
                     </List>
                     <Divider />
