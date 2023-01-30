@@ -15,7 +15,7 @@ import { useGlobalContext } from "../context/GlobalContext";
 import { useFetch } from "../hooks/useFetch";
 
 const PizzaCard = ({ pizza }) => {
-    const { addPizza } = useGlobalContext();
+    const { addPizza, formatNumber } = useGlobalContext();
 
     const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ const PizzaCard = ({ pizza }) => {
                     <Typography variant="h6">Ingredientes:</Typography>
                     <List>
                         {pizza.ingredients.map((item) => (
-                            <ListItem key={item}>🍕 {item}</ListItem>
+                            <ListItem key={item} sx={{paddingBlock:".2rem"}}>🍕 {item}</ListItem>
                         ))}
                     </List>
                     <Divider />
@@ -54,7 +54,7 @@ const PizzaCard = ({ pizza }) => {
                         textAlign="center"
                         my="1rem"
                     >
-                        $ {pizza.price}
+                        $ {formatNumber(pizza.price)}
                     </Typography>
                     <Stack
                         direction="row"
@@ -69,6 +69,7 @@ const PizzaCard = ({ pizza }) => {
                         </Button>
                         <Button
                             variant="contained"
+                            color="secondary"
                             onClick={() => addPizza(pizza)}
                         >
                             Añadir

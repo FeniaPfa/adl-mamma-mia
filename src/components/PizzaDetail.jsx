@@ -1,14 +1,16 @@
-import { Button, Stack, Typography } from '@mui/material'
-import React from 'react'
+import { Button, Divider, Stack, Typography } from '@mui/material'
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+
 import { useGlobalContext } from '../context/GlobalContext'
 
 const PizzaDetail = ({pizza}) => {
 
-  const { currentPizzas, addPizza, substractPizza } = useGlobalContext()
+  const { currentPizzas, addPizza, removePizza, formatNumber } = useGlobalContext()
   const pizzaCart = currentPizzas.find(item => item.id === pizza.id)
 
   return (
-
+    <>
     <Stack direction="row" justifyContent="space-around" >
       <Stack direction="row" gap="1rem" flexGrow="1" alignItems="center">
 
@@ -16,13 +18,14 @@ const PizzaDetail = ({pizza}) => {
       <Typography variant="h6">{pizza.name}</Typography>
       </Stack>
       <Stack direction="row"  gap="1rem" alignItems="center">
-      <Typography variant="h6">{pizzaCart.unitaryTotal}</Typography>
-      <Button variant="contained" color="secondary" size='small' onClick={() => substractPizza(pizza)}>-</Button>
+      <Typography variant="h6">$ {formatNumber(pizzaCart.unitaryTotal)}</Typography>
+      <Button variant="contained" color="secondary" size='small' onClick={() => removePizza(pizza)}><RemoveIcon /></Button>
       <Typography variant="h6">{pizzaCart.quantity}</Typography>
-      <Button variant='contained' size="small" onClick={() => addPizza(pizza)}>+</Button>
+      <Button variant='contained' size="small" onClick={() => addPizza(pizza)}><AddIcon /></Button>
       </Stack>
-      
     </Stack>
+    <Divider />
+    </>
   )
 }
 

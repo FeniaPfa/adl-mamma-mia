@@ -13,11 +13,11 @@ import { useGlobalContext } from "../context/GlobalContext";
 
 const Navbar = () => {
 
-  const {total, totalPizzaCount} = useGlobalContext()
+  const {total, totalPizzaCount, formatNumber} = useGlobalContext()
 
 
   const activeStyle = {
-    color: "#ffea00",
+    // color: "#d50000",
     fontWeight: "bold",
   };
 
@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       component="nav"
     >
       <Container maxWidth="lg">
@@ -50,6 +50,7 @@ const Navbar = () => {
             sx={{"> a": { color: "#fff" } }}
           >
             <Link
+            variant="h5"
               style={activeLink}
               to="/"
               component={NavLink}
@@ -57,17 +58,18 @@ const Navbar = () => {
               Home
             </Link>
             <Link
+            variant="h5"
               style={activeLink}
               to="/carrito"
               component={NavLink}
-              sx={{display: "flex"}}
+              sx={{display: "flex", alignItems:"center"}}
             >
-              <Badge badgeContent={totalPizzaCount} color="warning">
+              <Badge badgeContent={totalPizzaCount} color="secondary">
               <ShoppingCartIcon />
 
               </Badge>
             </Link>
-              <Typography variant="body1">$ {total}</Typography>
+              <Typography variant="h5">$ {formatNumber(total)}</Typography>
 
           </Stack>
         </Toolbar>
