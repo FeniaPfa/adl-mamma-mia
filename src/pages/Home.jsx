@@ -1,10 +1,13 @@
 import { Container, Stack } from "@mui/material";
 import Header from "../components/Header";
+import Loading from "../components/Loading";
 import PizzaCard from "../components/PizzaCard";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Home = () => {
-    const { pizzas } = useGlobalContext();
+    const { pizzas, loading } = useGlobalContext();
+
+    if(loading) return <Loading />
 
     return (
         <>

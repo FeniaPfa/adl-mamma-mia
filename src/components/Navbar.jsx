@@ -69,7 +69,7 @@ const Navbar = () => {
                                 <ShoppingCartIcon />
                             </Badge>
                         </Link>
-                        <Typography variant="h5">
+                        <Typography variant="h5" component="span">
                             $ {formatNumber(total)}
                         </Typography>
                     </Stack>

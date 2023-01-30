@@ -4,14 +4,16 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
     const [pizzas, setPizzas] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [total, setTotal] = useState(0);
     const [totalPizzaCount, setTotalPizzaCount] = useState(0);
     const [currentPizzas, setCurrentPizzas] = useState([]);
 
     const formatNumber = (number) => {
-        return new Intl.NumberFormat("en-US", { currency: "USD" }).format(
-            number
-        );
+        return new Intl.NumberFormat("en-US", { currency: "USD" })
+            .format(number)
+            .replace(",", ".");
     };
 
     const addPizza = (pizza) => {
@@ -59,6 +61,10 @@ export const GlobalProvider = ({ children }) => {
                 setPizzas,
                 addPizza,
                 removePizza,
+                setLoading,
+                loading,
+                error,
+                setError,
             }}
         >
             {children}

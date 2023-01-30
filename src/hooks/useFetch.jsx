@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 
 export const useFetch = () => {
-    const { setCurrentPizzas, setPizzas } = useGlobalContext();
+    const { setCurrentPizzas, setPizzas, setLoading, setError } = useGlobalContext();
 
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const getData = async () => {
         setLoading(true);
         try {
@@ -37,8 +35,4 @@ export const useFetch = () => {
         getData();
     }, []);
 
-    return {
-        loading,
-        error,
-    };
 };

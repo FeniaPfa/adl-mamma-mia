@@ -11,13 +11,14 @@ import {
     Stack,
     Typography,
 } from "@mui/material";
+
 import { useParams } from "react-router-dom";
 import { useGlobalContext } from "../context/GlobalContext";
 
 const Pizza = () => {
     const { id } = useParams();
 
-    const { pizzas, formatNumber, addPizza } = useGlobalContext();
+    const { pizzas, formatNumber, addPizza} = useGlobalContext();
 
     const pizzaData = pizzas.find((item) => item.id === id);
 
@@ -45,6 +46,7 @@ const Pizza = () => {
                         <Typography
                             variant="h4"
                             fontWeight="bold"
+                            component="h1"
                         >
                             {pizzaData.name}
                         </Typography>
@@ -53,6 +55,7 @@ const Pizza = () => {
                         <Typography
                             variant="h4"
                             fontWeight="bold"
+                            component="h2"
                         >
                             Ingredientes:
                         </Typography>
@@ -73,6 +76,7 @@ const Pizza = () => {
                             <Typography
                                 variant="h4"
                                 fontWeight="bold"
+                                component="h2"
                             >
                                 Precio: $ {formatNumber(pizzaData.price)}
                             </Typography>

@@ -37,11 +37,12 @@ const PizzaCard = ({ pizza }) => {
                     <Typography
                         variant="h5"
                         sx={{ fontWeight: "bold" }}
+                        component="h2"
                     >
                         {pizza.name}
                     </Typography>
                     <Divider variant="middle" />
-                    <Typography variant="h6">Ingredientes:</Typography>
+                    <Typography variant="h6" component="h3">Ingredientes:</Typography>
                     <List>
                         {pizza.ingredients.map((item) => (
                             <ListItem
