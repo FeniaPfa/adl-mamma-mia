@@ -10,7 +10,7 @@ function App() {
     useFetch();
 
     return (
-        <div className="App">
+        <>
             <Navbar />
 
             <Routes>
@@ -27,7 +27,7 @@ function App() {
                     element={<Pizza />}
                 />
             </Routes>
-        </div>
+        </>
     );
 }
 

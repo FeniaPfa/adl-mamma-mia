@@ -29,7 +29,7 @@ const Navbar = () => {
       position="sticky"
       component="nav"
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <Stack
             direction="row"

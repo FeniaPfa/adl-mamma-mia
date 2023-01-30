@@ -1,4 +1,4 @@
-import { Button, Divider, Stack, Typography } from '@mui/material'
+import { Box, Button, Divider, Stack, Typography } from '@mui/material'
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -20,7 +20,10 @@ const PizzaDetail = ({pizza}) => {
       <Stack direction="row"  gap="1rem" alignItems="center">
       <Typography variant="h6">$ {formatNumber(pizzaCart.unitaryTotal)}</Typography>
       <Button variant="contained" color="secondary" size='small' onClick={() => removePizza(pizza)}><RemoveIcon /></Button>
+      <Box sx={{width:"2rem", textAlign:"center"}}>
+
       <Typography variant="h6">{pizzaCart.quantity}</Typography>
+      </Box>
       <Button variant='contained' size="small" onClick={() => addPizza(pizza)}><AddIcon /></Button>
       </Stack>
     </Stack>
