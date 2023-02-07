@@ -8,7 +8,6 @@ export const GlobalProvider = ({ children }) => {
     const [total, setTotal] = useState(0);
     const [totalPizzaCount, setTotalPizzaCount] = useState(0);
 
-
     const formatNumber = (number) => {
         return new Intl.NumberFormat("en-US", { currency: "USD" })
             .format(number)

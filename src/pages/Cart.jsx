@@ -7,7 +7,7 @@ import { useFetch } from "../hooks/useFetch";
 import Loading from "../components/Loading";
 
 const Cart = () => {
-    const { pizzas,loading } = useFetch("/pizzas.json");
+    const { pizzas, loading } = useFetch("/pizzas.json");
     const { total, formatNumber } = useGlobalContext();
 
     const pay = () => {
@@ -33,7 +33,7 @@ const Cart = () => {
             }
         });
     };
-    if(loading) return <Loading />
+    if (loading) return <Loading />;
     return (
         <Container maxWidth="md" sx={{ margin: "2rem auto" }}>
             <Typography variant="h4" fontWeight="bold">

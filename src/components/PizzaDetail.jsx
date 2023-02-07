@@ -10,32 +10,21 @@ const PizzaDetail = ({ pizza }) => {
         useGlobalContext();
 
     const pizzaCart = currentPizzas.find((item) => item.id === pizza.id);
-    console.log(pizza)
-    if(!pizza) return <Loading />
+    console.log(pizza);
+    if (!pizza) return <Loading />;
     return (
         <>
-            <Stack
-                direction="row"
-                justifyContent="space-around"
-            >
+            <Stack direction="row" justifyContent="space-around">
                 <Stack
                     direction="row"
                     gap="1rem"
                     flexGrow="1"
                     alignItems="center"
                 >
-                    <img
-                        src={pizza.img}
-                        alt={pizza.name}
-                        width="100"
-                    />
+                    <img src={pizza.img} alt={pizza.name} width="100" />
                     <Typography variant="h6">{pizza.name}</Typography>
                 </Stack>
-                <Stack
-                    direction="row"
-                    gap="1rem"
-                    alignItems="center"
-                >
+                <Stack direction="row" gap="1rem" alignItems="center">
                     <Typography variant="h6">
                         $ {formatNumber(pizzaCart.unitaryTotal)}
                     </Typography>

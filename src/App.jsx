@@ -13,13 +13,13 @@ import Loading from "./components/Loading";
 function App() {
     const { pizzas, loading } = useFetch("/pizzas.json");
     const { setCurrentPizzas } = useGlobalContext();
-    
+
     const initialPizzas = pizzas.map((item) => ({
         id: item.id,
         quantity: 0,
         unitaryTotal: 0,
     }));
-    
+
     useEffect(() => {
         setCurrentPizzas(initialPizzas);
     }, [pizzas]);
@@ -31,22 +31,10 @@ function App() {
             <Navbar />
 
             <Routes>
-                <Route
-                    path="/"
-                    element={<Home pizzas={pizzas} />}
-                />
-                <Route
-                    path="/carrito"
-                    element={<Cart />}
-                />
-                <Route
-                    path="/pizza/:id"
-                    element={<Pizza />}
-                />
-                <Route
-                    path="*"
-                    element={<NotFound />}
-                />
+                <Route path="/" element={<Home pizzas={pizzas} />} />
+                <Route path="/carrito" element={<Cart />} />
+                <Route path="/pizza/:id" element={<Pizza />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </>
     );

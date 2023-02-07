@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useGlobalContext } from "../context/GlobalContext";
 
 export const useFetch = (url) => {
     const [pizzas, setPizzas] = useState([]);
@@ -25,7 +24,7 @@ export const useFetch = (url) => {
             setLoading(false);
         }
     };
-    
+
     useEffect(() => {
         getData();
     }, []);

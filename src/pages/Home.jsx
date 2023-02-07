@@ -1,13 +1,8 @@
 import { Container, Stack } from "@mui/material";
-import { useEffect } from "react";
 import Header from "../components/Header";
-import Loading from "../components/Loading";
 import PizzaCard from "../components/PizzaCard";
-import { useGlobalContext } from "../context/GlobalContext";
-import { useFetch } from "../hooks/useFetch";
 
-const Home = ({pizzas}) => {
-
+const Home = ({ pizzas }) => {
     return (
         <>
             <Header />
