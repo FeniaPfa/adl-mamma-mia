@@ -6,9 +6,25 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import Pizza from "./pages/Pizza";
 import NotFound from "./pages/NotFound";
+import { useGlobalContext } from "./context/GlobalContext";
+import { useEffect } from "react";
+import Loading from "./components/Loading";
 
 function App() {
-    useFetch();
+    const { pizzas, loading } = useFetch("/pizzas.json");
+    const { setCurrentPizzas } = useGlobalContext();
+    
+    const initialPizzas = pizzas.map((item) => ({
+        id: item.id,
+        quantity: 0,
+        unitaryTotal: 0,
+    }));
+    
+    useEffect(() => {
+        setCurrentPizzas(initialPizzas);
+    }, [pizzas]);
+
+    if (loading) return <Loading />;
 
     return (
         <>
@@ -17,7 +33,7 @@ function App() {
             <Routes>
                 <Route
                     path="/"
-                    element={<Home />}
+                    element={<Home pizzas={pizzas} />}
                 />
                 <Route
                     path="/carrito"

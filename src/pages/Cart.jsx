@@ -3,14 +3,17 @@ import React from "react";
 import PizzaDetail from "../components/PizzaDetail";
 import { useGlobalContext } from "../context/GlobalContext";
 import Swal from "sweetalert2";
+import { useFetch } from "../hooks/useFetch";
+import Loading from "../components/Loading";
 
 const Cart = () => {
-    const { pizzas, total, formatNumber } = useGlobalContext();
+    const { pizzas,loading } = useFetch("/pizzas.json");
+    const { total, formatNumber } = useGlobalContext();
 
     const pay = () => {
         let timerInterval;
         Swal.fire({
-            title: "Redirigiendo a su banco",
+            title: "Redirigiendo a pagos",
 
             timer: 2000,
             timerProgressBar: true,
@@ -25,22 +28,15 @@ const Cart = () => {
                 clearInterval(timerInterval);
             },
         }).then((result) => {
-
             if (result.dismiss === Swal.DismissReason.timer) {
                 console.log("I was closed by the timer");
             }
         });
     };
-
+    if(loading) return <Loading />
     return (
-        <Container
-            maxWidth="md"
-            sx={{ margin: "2rem auto" }}
-        >
-            <Typography
-                variant="h4"
-                fontWeight="bold"
-            >
+        <Container maxWidth="md" sx={{ margin: "2rem auto" }}>
+            <Typography variant="h4" fontWeight="bold">
                 Detalles del pedido:
             </Typography>
             <Stack
@@ -52,25 +48,14 @@ const Cart = () => {
                 }}
             >
                 {pizzas.map((item) => (
-                    <PizzaDetail
-                        key={item.id}
-                        pizza={item}
-                    />
+                    <PizzaDetail key={item.id} pizza={item} />
                 ))}
             </Stack>
-            <Stack
-                alignItems="flex-start"
-                mt="1.2rem"
-                gap="1rem"
-            >
+            <Stack alignItems="flex-start" mt="1.2rem" gap="1rem">
                 <Typography variant="h4">
                     Total: $ {formatNumber(total)}
                 </Typography>
-                <Button
-                    variant="contained"
-                    size="large"
-                    onClick={pay}
-                >
+                <Button variant="contained" size="large" onClick={pay}>
                     Ir a Pagar
                 </Button>
             </Stack>

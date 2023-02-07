@@ -3,12 +3,15 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useGlobalContext } from "../context/GlobalContext";
+import Loading from "./Loading";
 
 const PizzaDetail = ({ pizza }) => {
     const { currentPizzas, addPizza, removePizza, formatNumber } =
         useGlobalContext();
-    const pizzaCart = currentPizzas.find((item) => item.id === pizza.id);
 
+    const pizzaCart = currentPizzas.find((item) => item.id === pizza.id);
+    console.log(pizza)
+    if(!pizza) return <Loading />
     return (
         <>
             <Stack

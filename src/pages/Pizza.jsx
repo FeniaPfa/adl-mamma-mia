@@ -13,15 +13,20 @@ import {
 } from "@mui/material";
 
 import { useParams } from "react-router-dom";
+import Error from "../components/Error";
+import Loading from "../components/Loading";
 import { useGlobalContext } from "../context/GlobalContext";
+import { useFetch } from "../hooks/useFetch";
 
 const Pizza = () => {
     const { id } = useParams();
+    const {pizzas, loading} = useFetch('/pizzas.json')
+    const {formatNumber, addPizza} = useGlobalContext();
 
-    const { pizzas, formatNumber, addPizza} = useGlobalContext();
+    let pizzaData = pizzas.find((item) => item.id === id)
 
-    const pizzaData = pizzas.find((item) => item.id === id);
-
+    if(loading) return <Loading />
+    if(!pizzaData) return <Error />
     return (
         <Container
             maxWidth="lg"
@@ -30,7 +35,7 @@ const Pizza = () => {
             <Card sx={{ display: "flex" }}>
                 <CardMedia
                     component="img"
-                    title={Pizza.name}
+                    title={pizzaData.name}
                     image={pizzaData.img}
                     sx={{ width: "40%", objectFit: "cover" }}
                 />

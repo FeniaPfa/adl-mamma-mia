@@ -4,12 +4,10 @@ import Swal from "sweetalert2";
 const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-    const [pizzas, setPizzas] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [currentPizzas, setCurrentPizzas] = useState([]);
     const [total, setTotal] = useState(0);
     const [totalPizzaCount, setTotalPizzaCount] = useState(0);
-    const [currentPizzas, setCurrentPizzas] = useState([]);
+
 
     const formatNumber = (number) => {
         return new Intl.NumberFormat("en-US", { currency: "USD" })
@@ -47,6 +45,20 @@ export const GlobalProvider = ({ children }) => {
     };
 
     const removePizza = (pizza) => {
+        Swal.fire({
+            title: "Producto eliminado",
+            icon: "error",
+            timer: 1000,
+            toast: true,
+            position: "bottom-right",
+            showConfirmButton: false,
+            showClass: {
+                popup: "animate__animated animate__fadeInDown",
+            },
+            hideClass: {
+                popup: "animate__animated animate__fadeOut",
+            },
+        });
         const pizzaIndex = currentPizzas.findIndex(
             (item) => item.id === pizza.id
         );
@@ -72,14 +84,8 @@ export const GlobalProvider = ({ children }) => {
                 setTotalPizzaCount,
                 setCurrentPizzas,
                 currentPizzas,
-                pizzas,
-                setPizzas,
                 addPizza,
                 removePizza,
-                setLoading,
-                loading,
-                error,
-                setError,
             }}
         >
             {children}

@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/GlobalContext";
 
-export const useFetch = () => {
-    const { setCurrentPizzas, setPizzas, setLoading, setError } = useGlobalContext();
+export const useFetch = (url) => {
+    const [pizzas, setPizzas] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const getData = async () => {
         setLoading(true);
         try {
-            const res = await fetch("pizzas.json");
+            const res = await fetch(url);
             if (!res.ok) {
                 throw {
                     msg: "Falló el consumo de la api",
@@ -16,14 +18,6 @@ export const useFetch = () => {
             }
             const db = await res.json();
             setPizzas(db);
-
-            const initialPizzas = db.map((item) => ({
-                id: item.id,
-                quantity: 0,
-                unitaryTotal: 0,
-            }));
-
-            setCurrentPizzas(initialPizzas);
         } catch (error) {
             console.log(error);
             setError(error);
@@ -31,8 +25,14 @@ export const useFetch = () => {
             setLoading(false);
         }
     };
+    
     useEffect(() => {
         getData();
     }, []);
 
+    return {
+        pizzas,
+        loading,
+        error,
+    };
 };
