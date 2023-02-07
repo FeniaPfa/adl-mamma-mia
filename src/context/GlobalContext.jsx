@@ -44,6 +44,12 @@ export const GlobalProvider = ({ children }) => {
     };
 
     const removePizza = (pizza) => {
+        let newPizzas = [...currentPizzas];
+
+        const pizzaIndex = currentPizzas.findIndex(
+            (item) => item.id === pizza.id
+        );
+        if (total === 0 || currentPizzas[pizzaIndex].quantity === 0) return;
         Swal.fire({
             title: "Producto eliminado",
             icon: "error",
@@ -58,11 +64,6 @@ export const GlobalProvider = ({ children }) => {
                 popup: "animate__animated animate__fadeOut",
             },
         });
-        const pizzaIndex = currentPizzas.findIndex(
-            (item) => item.id === pizza.id
-        );
-        let newPizzas = [...currentPizzas];
-        if (total === 0 || currentPizzas[pizzaIndex].quantity === 0) return;
         setTotal(total - pizza.price);
         setTotalPizzaCount(totalPizzaCount - 1);
         newPizzas[pizzaIndex] = {
