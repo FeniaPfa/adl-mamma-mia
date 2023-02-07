@@ -20,18 +20,15 @@ import { useFetch } from "../hooks/useFetch";
 
 const Pizza = () => {
     const { id } = useParams();
-    const {pizzas, loading} = useFetch('/pizzas.json')
-    const {formatNumber, addPizza} = useGlobalContext();
+    const { pizzas, loading } = useFetch("/pizzas.json");
+    const { formatNumber, addPizza } = useGlobalContext();
 
-    let pizzaData = pizzas.find((item) => item.id === id)
+    let pizzaData = pizzas.find((item) => item.id === id);
 
-    if(loading) return <Loading />
-    if(!pizzaData) return <Error />
+    if (loading) return <Loading />;
+    if (!pizzaData) return <Error />;
     return (
-        <Container
-            maxWidth="lg"
-            sx={{ margin: "2rem auto" }}
-        >
+        <Container maxWidth="lg" sx={{ margin: "2rem auto" }}>
             <Card sx={{ display: "flex" }}>
                 <CardMedia
                     component="img"
@@ -74,10 +71,7 @@ const Pizza = () => {
                                 </ListItem>
                             ))}
                         </List>
-                        <Stack
-                            direction="row"
-                            justifyContent="space-between"
-                        >
+                        <Stack direction="row" justifyContent="space-between">
                             <Typography
                                 variant="h4"
                                 fontWeight="bold"

@@ -10,15 +10,8 @@ const Loading = () => {
                 gap="3rem"
                 sx={{ margin: "5rem auto" }}
             >
-                <CircularProgress
-                    size={200}
-                    color="secondary"
-                />
-                <Typography
-                    variant="h3"
-                    component="span"
-                    color="primary"
-                >
+                <CircularProgress size={200} color="secondary" />
+                <Typography variant="h3" component="span" color="primary">
                     Cargando pizzas...
                 </Typography>
             </Stack>

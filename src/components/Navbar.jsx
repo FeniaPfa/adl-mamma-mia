@@ -22,10 +22,7 @@ const Navbar = () => {
         isActive ? activeStyle : { color: "white" };
 
     return (
-        <AppBar
-            position="sticky"
-            component="nav"
-        >
+        <AppBar position="sticky" component="nav">
             <Container maxWidth="lg">
                 <Toolbar
                     sx={{ display: "flex", justifyContent: "space-between" }}

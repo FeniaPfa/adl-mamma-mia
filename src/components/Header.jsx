@@ -15,11 +15,7 @@ const Header = () => {
                 backgroundPosition: "center",
             }}
         >
-            <Stack
-                alignItems="center"
-                justifyContent="center"
-                height="100%"
-            >
+            <Stack alignItems="center" justifyContent="center" height="100%">
                 <Typography
                     variant="h2"
                     fontWeight="bold"
@@ -28,11 +24,7 @@ const Header = () => {
                 >
                     ¡Pizzeria Mamma Mia!
                 </Typography>
-                <Typography
-                    variant="h4"
-                    fontWeight="bold"
-                    sx={style}
-                >
+                <Typography variant="h4" fontWeight="bold" sx={style}>
                     ¡Tenemos las mejores Pizzas que podrás encontrar!
                 </Typography>
             </Stack>
