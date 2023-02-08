@@ -9,9 +9,7 @@ export const GlobalProvider = ({ children }) => {
     const [totalPizzaCount, setTotalPizzaCount] = useState(0);
 
     const formatNumber = (number) => {
-        return new Intl.NumberFormat("en-US", { currency: "USD" })
-            .format(number)
-            .replace(",", ".");
+        return number.toLocaleString("de-De")
     };
 
     const addPizza = (pizza) => {
@@ -49,7 +47,7 @@ export const GlobalProvider = ({ children }) => {
         const pizzaIndex = currentPizzas.findIndex(
             (item) => item.id === pizza.id
         );
-        if (total === 0 || currentPizzas[pizzaIndex].quantity === 0) return;
+        if (currentPizzas[pizzaIndex].quantity === 0) return;
         Swal.fire({
             title: "Producto eliminado",
             icon: "error",
