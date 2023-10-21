@@ -1,17 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-import { useFetch } from "./hooks/useFetch";
-
-import Navbar from "./components/Navbar";
-import Cart from "./pages/Cart";
-import Home from "./pages/Home";
-import Pizza from "./pages/Pizza";
-import NotFound from "./pages/NotFound";
-import { useGlobalContext } from "./context/GlobalContext";
-import { useEffect } from "react";
-import Loading from "./components/Loading";
+import { Route, Routes } from 'react-router-dom';
+import { usePizzas } from './hooks/usePizzas';
+import { useGlobalContext } from './context/GlobalContext';
+import { useEffect } from 'react';
+import { Loading, Navbar } from './components';
+import { Cart, Home, NotFound, Pizza } from './pages';
 
 function App() {
-    const { pizzas, loading } = useFetch("/pizzas.json");
+    const { pizzas, loading } = usePizzas();
     const { setCurrentPizzas } = useGlobalContext();
 
     const initialPizzas = pizzas.map((item) => ({

@@ -1,9 +1,8 @@
-import { Alert, AlertTitle, Container } from "@mui/material";
-import React from "react";
+import { Alert, AlertTitle, Container } from '@mui/material';
 
-const Error = () => {
+export const Error = () => {
     return (
-        <Container maxWidth="md" sx={{ margin: "3rem auto" }}>
+        <Container maxWidth="md" sx={{ margin: '3rem auto' }}>
             <Alert variant="filled" severity="error">
                 <AlertTitle>Error</AlertTitle>
                 Pizza <strong>no encontrada</strong>
@@ -11,5 +10,3 @@ const Error = () => {
         </Container>
     );
 };
-
-export default Error;

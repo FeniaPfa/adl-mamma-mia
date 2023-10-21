@@ -1,15 +1,11 @@
-import React from "react";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { Container, Stack, Typography } from "@mui/material";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import { Container, Stack, Typography } from '@mui/material';
 
 const NotFound = () => {
     return (
         <Container maxWidth="md">
             <Stack alignItems="center" mt="3rem">
-                <ErrorOutlineIcon
-                    color="secondary"
-                    sx={{ fontSize: "16rem" }}
-                />
+                <ErrorOutlineIcon color="secondary" sx={{ fontSize: '16rem' }} />
                 <Typography variant="h2" color="secondary" fontWeight="bold">
                     Error 404
                 </Typography>

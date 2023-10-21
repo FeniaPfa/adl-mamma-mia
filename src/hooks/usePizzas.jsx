@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (url) => {
+export const usePizzas = () => {
     const [pizzas, setPizzas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -8,7 +8,7 @@ export const useFetch = (url) => {
     const getData = async () => {
         setLoading(true);
         try {
-            const res = await fetch(url);
+            const res = await fetch("/pizzas.json");
             if (!res.ok) {
                 throw {
                     msg: "Falló el consumo de la api",

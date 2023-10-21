@@ -8,13 +8,13 @@ import {
     ListItem,
     Stack,
     Typography,
-} from "@mui/material";
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../context/GlobalContext";
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../context/GlobalContext';
+import { formatNumber } from '../utils/formatNumber';
 
-const PizzaCard = ({ pizza }) => {
-    const { addPizza, formatNumber } = useGlobalContext();
+export const PizzaCard = ({ pizza }) => {
+    const { addPizza } = useGlobalContext();
 
     const navigate = useNavigate();
 
@@ -24,18 +24,10 @@ const PizzaCard = ({ pizza }) => {
 
     return (
         <Card key={pizza.id} sx={{ width: 300 }}>
-            <CardMedia
-                sx={{ height: 160 }}
-                image={pizza.img}
-                title={pizza.name}
-            />
+            <CardMedia sx={{ height: 160 }} image={pizza.img} title={pizza.name} />
             <CardContent>
                 <Stack gap=".5em">
-                    <Typography
-                        variant="h5"
-                        sx={{ fontWeight: "bold" }}
-                        component="h2"
-                    >
+                    <Typography variant="h5" sx={{ fontWeight: 'bold' }} component="h2">
                         {pizza.name}
                     </Typography>
                     <Divider variant="middle" />
@@ -44,7 +36,7 @@ const PizzaCard = ({ pizza }) => {
                     </Typography>
                     <List>
                         {pizza.ingredients.map((item) => (
-                            <ListItem key={item} sx={{ paddingBlock: ".2rem" }}>
+                            <ListItem key={item} sx={{ paddingBlock: '.2rem' }}>
                                 🍕 {item}
                             </ListItem>
                         ))}
@@ -60,8 +52,7 @@ const PizzaCard = ({ pizza }) => {
                         <Button
                             variant="contained"
                             color="secondary"
-                            onClick={() => addPizza(pizza)}
-                        >
+                            onClick={() => addPizza(pizza)}>
                             Añadir
                         </Button>
                     </Stack>
@@ -70,5 +61,3 @@ const PizzaCard = ({ pizza }) => {
         </Card>
     );
 };
-
-export default PizzaCard;

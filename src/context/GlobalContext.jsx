@@ -8,10 +8,6 @@ export const GlobalProvider = ({ children }) => {
     const [total, setTotal] = useState(0);
     const [totalPizzaCount, setTotalPizzaCount] = useState(0);
 
-    const formatNumber = (number) => {
-        return number.toLocaleString("de-De")
-    };
-
     const addPizza = (pizza) => {
         Swal.fire({
             title: "Producto agregado",
@@ -75,7 +71,6 @@ export const GlobalProvider = ({ children }) => {
     return (
         <GlobalContext.Provider
             value={{
-                formatNumber,
                 total,
                 setTotal,
                 totalPizzaCount,

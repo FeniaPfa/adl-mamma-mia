@@ -1,27 +1,21 @@
-import { Box, Stack, Typography } from "@mui/material";
-import bg from "../assets/pizza-bg.jpg";
+import { Box, Stack, Typography } from '@mui/material';
+import bg from '../assets/pizza-bg.jpg';
 
-const Header = () => {
+export const Header = () => {
     const style = {
-        color: "#fff",
-        textShadow: "2px 2px 5px rgb(0 0 0 / 90%)",
+        color: '#fff',
+        textShadow: '2px 2px 5px rgb(0 0 0 / 90%)',
     };
 
     return (
         <Box
             sx={{
                 background: `url(${bg})`,
-                height: "40vh",
-                backgroundPosition: "center",
-            }}
-        >
+                height: '40vh',
+                backgroundPosition: 'center',
+            }}>
             <Stack alignItems="center" justifyContent="center" height="100%">
-                <Typography
-                    variant="h2"
-                    fontWeight="bold"
-                    component="h1"
-                    sx={style}
-                >
+                <Typography variant="h2" fontWeight="bold" component="h1" sx={style}>
                     ¡Pizzeria Mamma Mia!
                 </Typography>
                 <Typography variant="h4" fontWeight="bold" sx={style}>
@@ -31,5 +25,3 @@ const Header = () => {
         </Box>
     );
 };
-
-export default Header;
